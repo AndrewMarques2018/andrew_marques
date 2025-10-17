@@ -15,6 +15,10 @@ const Introduction = () => {
     <section className={styles.intro}>
       <div className={styles.container}>
         <div className={styles.content}>
+          <div className={styles.imageContainer}>
+            <img src={me.avatar} alt="Andrew Marques" className={styles.profileImage} />
+          </div>
+          
           <div className={styles.textContainer}>
             <span className={styles.greeting}>Olá, meu nome é</span>
             <h1 className={styles.name}>{me.name}</h1>
@@ -30,9 +34,6 @@ const Introduction = () => {
                 <LinkedinIcon />
               </a>
             </div>
-          </div>
-          <div className={styles.imageContainer}>
-            <img src={me.avatar} alt="Andrew Marques" className={styles.profileImage} />
           </div>
         </div>
       </div>

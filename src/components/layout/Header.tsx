@@ -1,10 +1,12 @@
 import styles from './Header.module.scss';
 
-import { useState, useEffect } from 'react';
 import logo from '/Logo.png'
+import { useState, useEffect } from 'react';
+import { Menu, X } from 'lucide-react';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,10 +25,21 @@ const Header = () => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []); // O array vazio garante que o efeito rode apenas uma vez (na montagem)
+  }, []);
 
   // A classe 'scrolled' será adicionada condicionalmente
   const headerClasses = `${styles.header} ${isScrolled ? styles.scrolled : ''}`;
+  const navClasses = `${styles.nav} ${isMenuOpen ? styles.open : ''}`;
+
+  // Função para abrir/fechar o menu
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  // Função para fechar o menu ao clicar em um link
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
 
   return (
     <header className={headerClasses}>
@@ -34,22 +47,28 @@ const Header = () => {
         <a href="#top" className={styles.logo}>
           <img src={logo} alt="Logo Andrew Marques" />
         </a>
-        <nav className={styles.nav}>
+
+        <nav className={navClasses}>
           <ul>
             {/* Adicionaremos links para as seções aqui no futuro */}
-            <li><a href="#projetos">Projetos</a></li>
-            <li><a href="#habilidades">Habilidades</a></li>
-            <li><a href="#contato">Contato</a></li>
+            <li><a onClick={closeMenu} href="#projetos">Projetos</a></li>
+            <li><a onClick={closeMenu} href="#habilidades">Habilidades</a></li>
+            <li><a onClick={closeMenu} href="#contato">Contato</a></li>
           </ul>
-          <a 
-            href="/Curriculo2025.pdf" 
-            target="_blank" 
-            rel="noopener noreferrer" 
+          <a
+            href="/Curriculo2025.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             className={styles.resumeButton}
+            onClick={closeMenu}
           >
             Currículo
           </a>
         </nav>
+
+        <button className={styles.menuButton} onClick={toggleMenu} aria-label="Abrir menu">
+          {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
       </div>
     </header>
   );

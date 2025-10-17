@@ -27,27 +27,27 @@
 
   // Layout de duas colunas em telas maiores
   @media (min-width: theme.$breakpoint-md) {
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 }
 
 .textContainer {
   .greeting {
-    font-size: 1.1rem;
+    font-size: 14pt;
     color: theme.$color-primary;
     margin-bottom: theme.$spacing-md;
     display: block;
   }
 
   .name {
-    font-size: clamp(2.5rem, 5vw, 4.5rem); // Tipografia fluida
+    font-size: 26pt;
     font-weight: 700;
     color: theme.$color-text-highlight;
     margin: 0;
   }
 
   .role {
-    font-size: clamp(1.2rem, 2.8vw, 2.2rem);
+    font-size: 16pt;
     font-weight: 500;
     color: theme.$color-text;
     margin-top: theme.$spacing-sm;
@@ -55,7 +55,7 @@
   }
 
   .description {
-    font-size: 1.1rem;
+    font-size: 12pt;
     line-height: 1.6;
     max-width: 600px; // Limita a largura da linha para melhor legibilidade
     margin-bottom: theme.$spacing-xl;
@@ -90,8 +90,10 @@
 }
 
 .profileImage {
-  width: 300px;
-  height: 300px;
+  width: 56%;
+  height: 56%;
+  max-width: 300px;
+  max-height: 300px;
   border-radius: 50%;
   object-fit: cover;
   border: 4px solid theme.$color-background-light;

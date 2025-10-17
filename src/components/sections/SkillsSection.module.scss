@@ -12,7 +12,7 @@
 
 .mainTitle {
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 24pt;
   margin-bottom: theme.$spacing-xxl;
   position: relative;
   &::after {
@@ -30,7 +30,7 @@
 }
 
 .subTitle {
-  font-size: 1.8rem;
+  font-size: 18pt;
   color: theme.$color-text-highlight;
   margin-bottom: theme.$spacing-xl;
   text-align: center;

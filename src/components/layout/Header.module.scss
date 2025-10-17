@@ -18,6 +18,7 @@
 }
 
 .container {
+  position: relative;
   max-width: theme.$breakpoint-xl;
   margin: 0 auto;
   padding: 0 theme.$spacing-xl;
@@ -26,12 +27,28 @@
   align-items: center;
 }
 
+.menuButton {
+  display: none; // Escondido por padrão
+  background: none;
+  border: none;
+  color: theme.$color-text-highlight;
+  cursor: pointer;
+  z-index: 1001; // Para ficar acima do nav
+}
+
 .logo {
   img {
-    height: 40px; // Ajuste a altura da logo conforme necessário
+    height: 30px;
     transition: transform theme.$transition-speed;
+
     &:hover {
       transform: scale(1.05);
+    }
+  }
+
+  @media (min-width: theme.$breakpoint-md) {
+    img {
+      height: 40px;
     }
   }
 }
@@ -69,6 +86,7 @@
 
       &:hover {
         color: theme.$color-text-highlight;
+
         &::after {
           transform: scaleX(1);
           transform-origin: left;
@@ -91,5 +109,51 @@
   &:hover {
     background-color: theme.$color-primary;
     color: theme.$color-background-dark;
+  }
+}
+
+@media (max-width: theme.$breakpoint-md) {
+  .menuButton {
+    display: block; // Mostra o botão hambúrguer
+  }
+
+  .nav {
+    // 1. Posicionamento do Dropdown
+    position: absolute;
+    top: calc(100% + #{theme.$spacing-sm}); // Posiciona abaixo do container do header
+    left: 0;
+    right: 0;
+    width: 100%;
+
+    // 2. Aparência do Dropdown
+    background-color: theme.$color-background-light;
+    border-radius: theme.$border-radius;
+    padding: theme.$spacing-xl;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+
+    // 3. Lógica de Animação (Fade e Drop)
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none; // Impede interação quando escondido
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+
+    // 4. Layout Interno do Dropdown
+    flex-direction: column;
+    gap: theme.$spacing-lg;
+
+    // 5. Estado Aberto (.open)
+    &.open {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto; // Permite interação
+    }
+
+    // Ajusta o layout da lista de links
+    ul {
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      gap: theme.$spacing-lg;
+    }
   }
 }
