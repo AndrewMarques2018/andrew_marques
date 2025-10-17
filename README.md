@@ -1,73 +1,102 @@
-# React + TypeScript + Vite
+# Portfólio Pessoal de Andrew Marques
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Banner do Portfólio](public/Banner.png)
 
-Currently, two official plugins are available:
+Este é o repositório do meu portfólio pessoal, desenvolvido para apresentar minhas habilidades, projetos e trajetória como Desenvolvedor Full Stack. O site foi projetado com uma estética moderna e minimalista, focado em performance e em uma experiência de usuário limpa e intuitiva.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**[➡️ Visite o site ao vivo](https://SUA_URL_AQUI.netlify.app/)**
 
-## React Compiler
+---
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+## ✨ Funcionalidades
 
-## Expanding the ESLint configuration
+- **Design Responsivo:** Totalmente adaptado para uma experiência perfeita em desktops, tablets e dispositivos móveis.
+- **Single Page Application (SPA):** Navegação fluida e rápida, construída com React e React Router.
+- **Componentização Robusta:** Arquitetura baseada em componentes, inspirada em conceitos do Atomic Design para máxima reutilização e manutenibilidade.
+- **Páginas de Detalhes de Projetos:** Rotas dinâmicas que geram páginas detalhadas para cada projeto, carregando dados de um arquivo central.
+- **Header Inteligente:** Navbar fixa que muda de aparência com a rolagem da página.
+- **Rolagem Suave:** Navegação interna entre as seções da página de forma suave e elegante.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🛠️ Stack de Tecnologias
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+A stack foi escolhida para garantir performance, escalabilidade e uma excelente experiência de desenvolvimento.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- **Frontend:** **React** com **Vite** e **TypeScript**
+- **Estilização:** **SCSS** com **CSS Modules**
+- **Ícones:** **Lucide React** e **React Icons**
+- **Roteamento:** **React Router DOM**
+- **Hospedagem & Deploy:** **Netlify** (com Deploy Contínuo)
+
+---
+
+## 🚀 Como Executar o Projeto
+
+Siga os passos abaixo para executar o projeto localmente.
+
+### Pré-requisitos
+
+- **Node.js** (versão 18 ou superior)
+- **npm** (ou yarn/pnpm)
+
+### Instalação
+
+1. **Clone o repositório:**
+   ```bash
+   git clone [https://github.com/AndrewMarques2018/SEU-REPOSITORIO.git](https://github.com/AndrewMarques2018/SEU-REPOSITORIO.git)
+   ```
+
+2. **Acesse a pasta do projeto:**
+   ```bash
+   cd SEU-REPOSITORIO
+   ```
+
+3. **Instale as dependências:**
+   ```bash
+   npm install
+   ```
+
+### Executando
+
+1. **Inicie o servidor de desenvolvimento:**
+   ```bash
+   npm run dev
+   ```
+2. Abra seu navegador e acesse `http://localhost:5173` (ou a porta indicada no terminal).
+
+### Build
+
+Para gerar a versão de produção otimizada do site:
+
+```bash
+npm run build
+```
+Os arquivos finais estarão na pasta `dist/`.
+
+---
+
+## 📂 Estrutura de Pastas
+
+O projeto segue uma arquitetura organizada para facilitar a manutenção e escalabilidade:
+
+```
+src/
+├── assets/         # Imagens, logos e fontes
+├── components/     # Componentes React reutilizáveis (layout, ui, sections)
+├── data/           # Arquivos .ts que servem como "banco de dados" (projetos, habilidades)
+├── pages/          # Componentes de página (Home, ProjectDetail)
+├── styles/         # Estilos globais e o arquivo de tema (theme.scss)
+├── types/          # Definições de tipos do TypeScript
+├── App.tsx         # Componente raiz que define o layout principal
+└── main.tsx        # Ponto de entrada da aplicação, onde o React é renderizado
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 📬 Contato
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+**Andrew Marques**
+
+- **LinkedIn:** [@andrewmarques](https://www.linkedin.com/in/andrew-marques-de-oliveira-9b7875222/)
+- **E-mail:** andrewmarques2018@gmail.com
