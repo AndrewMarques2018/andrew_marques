@@ -1,0 +1,32 @@
+// src/styles/main.scss
+
+// 1. Importa o tema para que as variáveis estejam disponíveis globalmente
+@use 'theme' as theme;
+
+// 2. Resets e estilos globais básicos
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+// Adicione esta nova classe
+.section-target {
+  // Deixa um espaço de 100px acima da seção ao rolar para ela.
+  // Isso evita que o conteúdo fique escondido atrás do header.
+  scroll-margin-top: 100px;
+}
+
+body {
+  font-family: 'Inter', sans-serif; // Sugestão de fonte moderna. Adicione via Google Fonts se gostar.
+  background-color: theme.$color-background-dark;
+  color: theme.$color-text;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: theme.$color-text-highlight;
+}

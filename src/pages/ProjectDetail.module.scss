@@ -1,0 +1,173 @@
+// src/pages/ProjectDetail.module.scss
+@use '../styles/theme' as theme;
+
+.projectDetail {
+  padding: theme.$spacing-xxl 0;
+  padding-top: 6rem;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.container {
+  max-width: theme.$breakpoint-lg;
+  margin: 0 auto;
+  padding: 0 theme.$spacing-xl;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: theme.$spacing-sm;
+  color: theme.$color-primary;
+  text-decoration: none;
+  margin-bottom: theme.$spacing-xl;
+  transition: color theme.$transition-speed;
+  &:hover { color: theme.$color-text-highlight; }
+}
+
+.header {
+  text-align: center;
+  margin-bottom: theme.$spacing-xxl;
+  h1 { font-size: 3rem; margin-bottom: theme.$spacing-md; }
+  .shortDescription { font-size: 1.2rem; color: theme.$color-text; }
+}
+
+.headerLinks {
+  display: flex;
+  justify-content: center;
+  gap: theme.$spacing-lg;
+  margin-top: theme.$spacing-lg;
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: theme.$spacing-sm;
+    color: theme.$color-text;
+    text-decoration: none;
+    transition: color theme.$transition-speed;
+    &:hover { color: theme.$color-primary; }
+  }
+}
+
+.detailsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: theme.$spacing-xxl;
+
+  @media (min-width: theme.$breakpoint-md) {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+.descriptionSection h3 {
+  font-size: 1.5rem;
+  margin-bottom: theme.$spacing-md;
+  color: theme.$color-text-highlight;
+  &:not(:first-child) { margin-top: theme.$spacing-xl; }
+}
+.descriptionSection p {
+  line-height: 1.7;
+  color: theme.$color-text;
+}
+
+.sidebar {
+  background-color: theme.$color-background-light;
+  padding: theme.$spacing-xl;
+  border-radius: theme.$border-radius;
+  h3 {
+    font-size: 1.2rem;
+    margin-bottom: theme.$spacing-md;
+    color: theme.$color-text-highlight;
+  }
+  ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: theme.$spacing-xl;
+    li { line-height: 1.6; }
+  }
+  .stack li {
+    display: inline-block;
+    background-color: rgba(theme.$color-primary, 0.1);
+    color: theme.$color-primary;
+    padding: theme.$spacing-xs theme.$spacing-md;
+    margin: 4px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+  }
+}
+
+.notFound {
+  text-align: center;
+  padding: 5rem 1rem;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.gallery {
+  display: flex;
+  overflow-x: auto;
+  gap: theme.$spacing-lg;
+  margin-bottom: theme.$spacing-xxl;
+  scroll-snap-type: x mandatory;
+
+  // Truque para alinhar o conteúdo mesmo com padding e criar o efeito "peek"
+  padding-left: theme.$spacing-xl; // Padding à esquerda para mostrar o começo do primeiro item
+  padding-right: theme.$spacing-xl; // Padding à direita para mostrar o "peek" do último item
+  margin-left: calc(-1 * theme.$spacing-xl); // Compensa o padding esquerdo
+  margin-right: calc(-1 * theme.$spacing-xl); // Compensa o padding direito
+
+  // Esconde a barra de rolagem (mantém-se)
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  // Permite que os itens da galeria tenham alturas diferentes se necessário,
+  // mas vamos padronizar a altura dentro do .mediaItem
+  align-items: center; // Centraliza verticalmente se houver variações
+}
+
+.mediaItem {
+  // Novo comportamento: Altura fixa, largura automática e scroll snap
+  flex: 0 0 auto; // Não cresce, não diminui, largura automática
+  height: 400px; // Altura fixa desejada. Ajuste este valor se preferir.
+  scroll-snap-align: center; // Alinha o item no centro ao "snappar"
+
+  background-color: theme.$color-background-light;
+  border-radius: theme.$border-radius;
+  overflow: hidden; // Garante que o conteúdo não vaze
+  position: relative; // Para o playOverlay
+
+  // Para garantir que a largura se ajuste à imagem sem cortar
+  width: auto; 
+  max-width: 90vw; // Limita a largura máxima para não exceder a tela em mobile
+
+  img, video {
+    height: 100%; // Imagem/vídeo preenche a altura fixa do container
+    width: auto; // A largura se ajusta automaticamente para manter a proporção
+    max-width: none; // Garante que a largura não seja limitada artificialmente
+    object-fit: contain; // Importante: Garante que a mídia seja CONTIDA dentro do espaço sem ser cortada
+    background-color: black; // Fundo preto para preencher espaços vazios (letterboxing/pillarboxing)
+  }
+}
+
+.playOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity theme.$transition-speed;
+
+  &:hover {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,105 @@
+// src/components/ui/ProjectCard.module.scss
+@use '../../styles/theme' as theme;
+
+.cardLink {
+  text-decoration: none;
+  color: inherit;
+  outline: none;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.card {
+  background-color: theme.$color-background-light;
+  border-radius: theme.$border-radius;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform theme.$transition-speed, box-shadow theme.$transition-speed;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  height: 100%;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.mediaContainer {
+  width: 100%;
+  aspect-ratio: 16 / 9; // Proporção de vídeo
+  background-color: #000;
+  height: 48%;
+}
+
+.media {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.content {
+  padding: theme.$spacing-lg;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; // Faz o conteúdo ocupar o espaço restante
+}
+
+.title {
+  font-size: 1.25rem;
+  color: theme.$color-text-highlight;
+  margin-bottom: theme.$spacing-sm;
+}
+
+.description {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: theme.$spacing-md;
+  flex-grow: 1; // Empurra a stack e os links para baixo
+}
+
+.stack {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: theme.$spacing-sm;
+  margin-bottom: theme.$spacing-lg;
+
+  li {
+    background-color: rgba(theme.$color-primary, 0.1);
+    color: theme.$color-primary;
+    padding: theme.$spacing-xs theme.$spacing-sm;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: theme.$spacing-md;
+  margin-top: auto;
+}
+
+// Nova classe para estilizar os botões como se fossem links
+.iconButton {
+  // Reset de estilos de botão
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  font-family: inherit; // Garante que a fonte seja a mesma
+
+  // Estilos que tínhamos no <a>
+  color: theme.$color-text;
+  transition: color theme.$transition-speed;
+  position: relative;
+  z-index: 2;
+
+  &:hover {
+    color: theme.$color-primary;
+  }
+}
