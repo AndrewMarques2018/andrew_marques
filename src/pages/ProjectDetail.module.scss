@@ -21,14 +21,25 @@
   text-decoration: none;
   margin-bottom: theme.$spacing-xl;
   transition: color theme.$transition-speed;
-  &:hover { color: theme.$color-text-highlight; }
+
+  &:hover {
+    color: theme.$color-text-highlight;
+  }
 }
 
 .header {
   text-align: center;
   margin-bottom: theme.$spacing-xxl;
-  h1 { font-size: 3rem; margin-bottom: theme.$spacing-md; }
-  .shortDescription { font-size: 1.2rem; color: theme.$color-text; }
+
+  h1 {
+    font-size: 26pt;
+    margin-bottom: theme.$spacing-md;
+  }
+
+  .shortDescription {
+    font-size: 14pt;
+    color: theme.$color-text;
+  }
 }
 
 .headerLinks {
@@ -36,6 +47,7 @@
   justify-content: center;
   gap: theme.$spacing-lg;
   margin-top: theme.$spacing-lg;
+
   a {
     display: inline-flex;
     align-items: center;
@@ -43,7 +55,10 @@
     color: theme.$color-text;
     text-decoration: none;
     transition: color theme.$transition-speed;
-    &:hover { color: theme.$color-primary; }
+
+    &:hover {
+      color: theme.$color-primary;
+    }
   }
 }
 
@@ -58,31 +73,42 @@
 }
 
 .descriptionSection h3 {
-  font-size: 1.5rem;
+  font-size: 22pt;
   margin-bottom: theme.$spacing-md;
   color: theme.$color-text-highlight;
-  &:not(:first-child) { margin-top: theme.$spacing-xl; }
+
+  &:not(:first-child) {
+    margin-top: theme.$spacing-xl;
+  }
 }
+
 .descriptionSection p {
+  font-size: 12pt;
   line-height: 1.7;
   color: theme.$color-text;
 }
 
 .sidebar {
   background-color: theme.$color-background-light;
-  padding: theme.$spacing-xl;
+  padding: theme.$spacing-lg;
   border-radius: theme.$border-radius;
+
   h3 {
-    font-size: 1.2rem;
+    font-size: 16pt;
     margin-bottom: theme.$spacing-md;
     color: theme.$color-text-highlight;
   }
+
   ul {
     list-style: none;
     padding-left: 0;
     margin-bottom: theme.$spacing-xl;
-    li { line-height: 1.6; }
+
+    li {
+      line-height: 1.6;
+    }
   }
+
   .stack li {
     display: inline-block;
     background-color: rgba(theme.$color-primary, 0.1);
@@ -90,7 +116,7 @@
     padding: theme.$spacing-xs theme.$spacing-md;
     margin: 4px;
     border-radius: 20px;
-    font-size: 0.9rem;
+    font-size: 12pt;
   }
 }
 
@@ -100,8 +126,15 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .gallery {
@@ -119,6 +152,7 @@
 
   // Esconde a barra de rolagem (mantém-se)
   scrollbar-width: none;
+
   &::-webkit-scrollbar {
     display: none;
   }
@@ -129,10 +163,8 @@
 }
 
 .mediaItem {
-  // Novo comportamento: Altura fixa, largura automática e scroll snap
   flex: 0 0 auto; // Não cresce, não diminui, largura automática
-  height: 400px; // Altura fixa desejada. Ajuste este valor se preferir.
-  scroll-snap-align: center; // Alinha o item no centro ao "snappar"
+  scroll-snap-align: center;
 
   background-color: theme.$color-background-light;
   border-radius: theme.$border-radius;
@@ -140,15 +172,22 @@
   position: relative; // Para o playOverlay
 
   // Para garantir que a largura se ajuste à imagem sem cortar
-  width: auto; 
-  max-width: 90vw; // Limita a largura máxima para não exceder a tela em mobile
+  width: auto;
 
-  img, video {
+  height: 320px;
+  max-width: 90vw;
+  
+  @media (min-width: theme.$breakpoint-md) {
+    height: 420px; 
+  }
+
+  img,
+  video {
     height: 100%; // Imagem/vídeo preenche a altura fixa do container
-    width: auto; // A largura se ajusta automaticamente para manter a proporção
-    max-width: none; // Garante que a largura não seja limitada artificialmente
+    width: 100%; // A largura se ajusta automaticamente para manter a proporção
+    max-width: none;
     object-fit: contain; // Importante: Garante que a mídia seja CONTIDA dentro do espaço sem ser cortada
-    background-color: black; // Fundo preto para preencher espaços vazios (letterboxing/pillarboxing)
+    background-color: theme.$color-background-light; // Fundo preto para preencher espaços vazios (letterboxing/pillarboxing)
   }
 }
 
