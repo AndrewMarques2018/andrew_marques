@@ -32,7 +32,7 @@ const Footer = ({ id }: FooterProps) => {
                 </a>
               </li>
               <li>
-                <a href="https://www.linkedin.com/in/andrew-marques-de-oliveira-9b7875222/" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.linkedin.com/in/andrewmarques2018/" target="_blank" rel="noopener noreferrer">
                   <Linkedin size={18} />
                   <span>LinkedIn</span>
                 </a>
